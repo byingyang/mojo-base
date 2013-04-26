@@ -30,3 +30,4 @@ NET "avr_tx" LOC = P55;
 NET "avr_rx" LOC = P59;
 NET "avr_rx_busy" LOC = P39;
 
+NET "button" LOC = P50;

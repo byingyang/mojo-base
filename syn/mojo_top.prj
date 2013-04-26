@@ -1,1 +1,2 @@
+verilog work "../blinker.v"
 verilog work "../src/mojo_top.v"

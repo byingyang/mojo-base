@@ -1,21 +1,18 @@
-Release 14.4 - xst P.49d (lin64)
+Release 14.5 - xst P.58f (nt)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
---> 
-Parameter TMPDIR set to xst/projnav.tmp
+--> Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.06 secs
  
---> 
-Parameter xsthdpdir set to xst
+--> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.06 secs
  
---> 
-Reading design: mojo_top.prj
+--> Reading design: mojo_top.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -108,7 +105,9 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file "/home/justin/workspace/Mojo-Tutorials/Mojo-Base/src/mojo_top.v" into library work
+Analyzing Verilog file "C:\Dev\mojo_projects\Mojo-Base\blinker.v" into library work
+Parsing module <blinker>.
+Analyzing Verilog file "C:\Dev\mojo_projects\Mojo-Base\src\mojo_top.v" into library work
 Parsing module <mojo_top>.
 
 =========================================================================
@@ -117,13 +116,14 @@ Parsing module <mojo_top>.
 
 Elaborating module <mojo_top>.
 
+Elaborating module <blinker>.
+
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <mojo_top>.
-    Related source file is "/home/justin/workspace/Mojo-Tutorials/Mojo-Base/src/mojo_top.v".
-WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Related source file is "C:\Dev\mojo_projects\Mojo-Base\src\mojo_top.v".
 WARNING:Xst:647 - Input <cclk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_ss> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_mosi> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -140,10 +140,23 @@ WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved
 	inferred   6 Tristate(s).
 Unit <mojo_top> synthesized.
 
+Synthesizing Unit <blinker>.
+    Related source file is "C:\Dev\mojo_projects\Mojo-Base\blinker.v".
+    Found 25-bit register for signal <counter_q>.
+    Found 25-bit adder for signal <counter_d> created at line 32.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  25 D-type flip-flop(s).
+Unit <blinker> synthesized.
+
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
+# Adders/Subtractors                                   : 1
+ 25-bit adder                                          : 1
+# Registers                                            : 1
+ 25-bit register                                       : 1
 # Tristates                                            : 6
  1-bit tristate buffer                                 : 6
 
@@ -154,10 +167,17 @@ Macro Statistics
 =========================================================================
 
 
+Synthesizing (advanced) Unit <blinker>.
+The following registers are absorbed into counter <counter_q>: 1 register on signal <counter_q>.
+Unit <blinker> synthesized (advanced).
+
 =========================================================================
 Advanced HDL Synthesis Report
 
-Found no macro
+Macro Statistics
+# Counters                                             : 1
+ 25-bit up counter                                     : 1
+
 =========================================================================
 
 =========================================================================
@@ -175,7 +195,10 @@ Final Macro Processing ...
 =========================================================================
 Final Register Report
 
-Found no macro
+Macro Statistics
+# Registers                                            : 25
+ Flip-Flops                                            : 25
+
 =========================================================================
 
 =========================================================================
@@ -197,10 +220,17 @@ Top Level Output File Name         : mojo_top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 3
+# BELS                             : 77
 #      GND                         : 1
-#      INV                         : 1
+#      INV                         : 2
+#      LUT1                        : 24
+#      MUXCY                       : 24
 #      VCC                         : 1
+#      XORCY                       : 25
+# FlipFlops/Latches                : 25
+#      FDR                         : 25
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
 # IO Buffers                       : 15
 #      IBUF                        : 1
 #      OBUF                        : 8
@@ -213,21 +243,23 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice LUTs:                    1  out of   5720     0%  
-    Number used as Logic:                 1  out of   5720     0%  
+ Number of Slice Registers:              25  out of  11440     0%  
+ Number of Slice LUTs:                   26  out of   5720     0%  
+    Number used as Logic:                26  out of   5720     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:      1
-   Number with an unused Flip Flop:       1  out of      1   100%  
-   Number with an unused LUT:             0  out of      1     0%  
-   Number of fully used LUT-FF pairs:     0  out of      1     0%  
-   Number of unique control sets:         0
+ Number of LUT Flip Flop pairs used:     26
+   Number with an unused Flip Flop:       1  out of     26     3%  
+   Number with an unused LUT:             0  out of     26     0%  
+   Number of fully used LUT-FF pairs:    25  out of     26    96%  
+   Number of unique control sets:         1
 
 IO Utilization: 
  Number of IOs:                          22
- Number of bonded IOBs:                  15  out of    102    14%  
+ Number of bonded IOBs:                  16  out of    102    15%  
 
 Specific Feature Utilization:
+ Number of BUFG/BUFGCTRL/BUFHCEs:         1  out of     16     6%  
 
 ---------------------------
 Partition Resource Summary:
@@ -247,7 +279,11 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
-No clock signals found in this design
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 25    |
+-----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -257,51 +293,125 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: No path found
-   Minimum input arrival time before clock: No path found
-   Maximum output required time after clock: No path found
-   Maximum combinational path delay: 5.857ns
+   Minimum period: 2.491ns (Maximum Frequency: 401.485MHz)
+   Minimum input arrival time before clock: 4.125ns
+   Maximum output required time after clock: 4.162ns
+   Maximum combinational path delay: No path found
 
 Timing Details:
 ---------------
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default path analysis
-  Total number of paths / destination ports: 1 / 1
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 2.491ns (frequency: 401.485MHz)
+  Total number of paths / destination ports: 325 / 25
 -------------------------------------------------------------------------
-Delay:               5.857ns (Levels of Logic = 3)
-  Source:            rst_n (PAD)
-  Destination:       led<7> (PAD)
+Delay:               2.491ns (Levels of Logic = 26)
+  Source:            awesome_blinker/counter_q_0 (FF)
+  Destination:       awesome_blinker/counter_q_24 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
 
-  Data Path: rst_n to led<7>
+  Data Path: awesome_blinker/counter_q_0 to awesome_blinker/counter_q_24
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              1   0.525   0.681  awesome_blinker/counter_q_0 (awesome_blinker/counter_q_0)
+     INV:I->O              1   0.255   0.000  awesome_blinker/Mcount_counter_q_lut<0>_INV_0 (awesome_blinker/Mcount_counter_q_lut<0>)
+     MUXCY:S->O            1   0.215   0.000  awesome_blinker/Mcount_counter_q_cy<0> (awesome_blinker/Mcount_counter_q_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<1> (awesome_blinker/Mcount_counter_q_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<2> (awesome_blinker/Mcount_counter_q_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<3> (awesome_blinker/Mcount_counter_q_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<4> (awesome_blinker/Mcount_counter_q_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<5> (awesome_blinker/Mcount_counter_q_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<6> (awesome_blinker/Mcount_counter_q_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<7> (awesome_blinker/Mcount_counter_q_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<8> (awesome_blinker/Mcount_counter_q_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<9> (awesome_blinker/Mcount_counter_q_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<10> (awesome_blinker/Mcount_counter_q_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<11> (awesome_blinker/Mcount_counter_q_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<12> (awesome_blinker/Mcount_counter_q_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<13> (awesome_blinker/Mcount_counter_q_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<14> (awesome_blinker/Mcount_counter_q_cy<14>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<15> (awesome_blinker/Mcount_counter_q_cy<15>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<16> (awesome_blinker/Mcount_counter_q_cy<16>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<17> (awesome_blinker/Mcount_counter_q_cy<17>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<18> (awesome_blinker/Mcount_counter_q_cy<18>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<19> (awesome_blinker/Mcount_counter_q_cy<19>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<20> (awesome_blinker/Mcount_counter_q_cy<20>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<21> (awesome_blinker/Mcount_counter_q_cy<21>)
+     MUXCY:CI->O           1   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<22> (awesome_blinker/Mcount_counter_q_cy<22>)
+     MUXCY:CI->O           0   0.023   0.000  awesome_blinker/Mcount_counter_q_cy<23> (awesome_blinker/Mcount_counter_q_cy<23>)
+     XORCY:CI->O           1   0.206   0.000  awesome_blinker/Mcount_counter_q_xor<24> (Result<24>)
+     FDR:D                     0.074          awesome_blinker/counter_q_24
+    ----------------------------------------
+    Total                      2.491ns (1.810ns logic, 0.681ns route)
+                                       (72.7% logic, 27.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 25 / 25
+-------------------------------------------------------------------------
+Offset:              4.125ns (Levels of Logic = 2)
+  Source:            rst_n (PAD)
+  Destination:       awesome_blinker/counter_q_0 (FF)
+  Destination Clock: clk rising
+
+  Data Path: rst_n to awesome_blinker/counter_q_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             1   1.328   0.681  rst_n_IBUF (rst_n_IBUF)
-     INV:I->O              1   0.255   0.681  rst1_INV_0 (led_7_OBUF)
-     OBUF:I->O                 2.912          led_7_OBUF (led<7>)
+     INV:I->O             25   0.255   1.402  rst1_INV_0 (rst)
+     FDR:R                     0.459          awesome_blinker/counter_q_0
     ----------------------------------------
-    Total                      5.857ns (4.495ns logic, 1.362ns route)
-                                       (76.7% logic, 23.3% route)
+    Total                      4.125ns (2.042ns logic, 2.083ns route)
+                                       (49.5% logic, 50.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              4.162ns (Levels of Logic = 1)
+  Source:            awesome_blinker/counter_q_24 (FF)
+  Destination:       led<0> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: awesome_blinker/counter_q_24 to led<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.525   0.725  awesome_blinker/counter_q_24 (awesome_blinker/counter_q_24)
+     OBUF:I->O                 2.912          led_0_OBUF (led<0>)
+    ----------------------------------------
+    Total                      4.162ns (3.437ns logic, 0.725ns route)
+                                       (82.6% logic, 17.4% route)
 
 =========================================================================
 
 Cross Clock Domains Report:
 --------------------------
 
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    2.491|         |         |         |
+---------------+---------+---------+---------+---------+
+
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.09 secs
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 2.80 secs
  
 --> 
 
-
-Total memory usage is 381040 kilobytes
+Total memory usage is 200028 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    7 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

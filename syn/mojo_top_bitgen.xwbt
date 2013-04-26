@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=/home/justin/workspace/Mojo-Tutorials/Mojo-Base/syn/mojo_top.ncd
-OUTFILE=/home/justin/workspace/Mojo-Tutorials/Mojo-Base/syn/mojo_top.bit
+INFILE=C:\Dev\mojo_projects\Mojo-Base\syn\mojo_top.ncd
+OUTFILE=C:\Dev\mojo_projects\Mojo-Base\syn\mojo_top.bit
 FAMILY=Spartan6
 PART=xc6slx9-2tqg144
-WORKINGDIR=/home/justin/workspace/Mojo-Tutorials/Mojo-Base/syn
+WORKINGDIR=C:\Dev\mojo_projects\Mojo-Base\syn
 LICENSE=WebPack
-USER_INFO=180328474_0_0_835
+USER_INFO=210756727_0_0_214

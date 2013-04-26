@@ -1,13 +1,13 @@
 //! **************************************************************************
-// Written by: Map P.49d on Tue Apr 16 11:03:29 2013
+// Written by: Map P.58f on Thu Apr 25 20:27:34 2013
 //! **************************************************************************
 
 SCHEMATIC START;
 COMP "led<0>" LOCATE = SITE "P134" LEVEL 1;
 COMP "spi_sck" LOCATE = SITE "P43" LEVEL 1;
 COMP "led<1>" LOCATE = SITE "P133" LEVEL 1;
-COMP "clk" LOCATE = SITE "P56" LEVEL 1;
 COMP "led<2>" LOCATE = SITE "P132" LEVEL 1;
+COMP "clk" LOCATE = SITE "P56" LEVEL 1;
 COMP "led<3>" LOCATE = SITE "P131" LEVEL 1;
 COMP "avr_rx_busy" LOCATE = SITE "P39" LEVEL 1;
 COMP "led<4>" LOCATE = SITE "P127" LEVEL 1;
@@ -19,5 +19,20 @@ COMP "spi_ss" LOCATE = SITE "P48" LEVEL 1;
 COMP "avr_tx" LOCATE = SITE "P55" LEVEL 1;
 COMP "rst_n" LOCATE = SITE "P38" LEVEL 1;
 COMP "cclk" LOCATE = SITE "P70" LEVEL 1;
+TIMEGRP clk = BEL "awesome_blinker/counter_q_0" BEL
+        "awesome_blinker/counter_q_1" BEL "awesome_blinker/counter_q_2" BEL
+        "awesome_blinker/counter_q_3" BEL "awesome_blinker/counter_q_4" BEL
+        "awesome_blinker/counter_q_5" BEL "awesome_blinker/counter_q_6" BEL
+        "awesome_blinker/counter_q_7" BEL "awesome_blinker/counter_q_8" BEL
+        "awesome_blinker/counter_q_9" BEL "awesome_blinker/counter_q_10" BEL
+        "awesome_blinker/counter_q_11" BEL "awesome_blinker/counter_q_12" BEL
+        "awesome_blinker/counter_q_13" BEL "awesome_blinker/counter_q_14" BEL
+        "awesome_blinker/counter_q_15" BEL "awesome_blinker/counter_q_16" BEL
+        "awesome_blinker/counter_q_17" BEL "awesome_blinker/counter_q_18" BEL
+        "awesome_blinker/counter_q_19" BEL "awesome_blinker/counter_q_20" BEL
+        "awesome_blinker/counter_q_21" BEL "awesome_blinker/counter_q_22" BEL
+        "awesome_blinker/counter_q_23" BEL "awesome_blinker/counter_q_24" BEL
+        "clk_BUFGP/BUFG";
+TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
 SCHEMATIC END;
 
